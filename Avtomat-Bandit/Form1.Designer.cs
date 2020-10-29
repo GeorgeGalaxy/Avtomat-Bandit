@@ -90,6 +90,8 @@
       this.label3.Size = new System.Drawing.Size(133, 147);
       this.label3.TabIndex = 3;
       this.label3.Text = "0";
+      this.label3.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
+      this.label3.MouseHover += new System.EventHandler(this.label3_MouseHover);
       // 
       // dvg1
       // 
@@ -125,11 +127,11 @@
       // 
       this.label4.AutoSize = true;
       this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-      this.label4.Location = new System.Drawing.Point(310, 296);
+      this.label4.Location = new System.Drawing.Point(319, 303);
       this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(179, 29);
+      this.label4.Size = new System.Drawing.Size(257, 29);
       this.label4.TabIndex = 4;
-      this.label4.Text = "Баланс:  $1000";
+      this.label4.Text = "Баланс:  $1000000000";
       this.label4.Click += new System.EventHandler(this.label4_Click);
       // 
       // numericUpDown1
@@ -200,6 +202,7 @@
       this.button3.Text = "button3";
       this.button3.UseVisualStyleBackColor = true;
       this.button3.Click += new System.EventHandler(this.button3_Click);
+      this.button3.MouseHover += new System.EventHandler(this.button3_MouseHover);
       // 
       // button4
       // 

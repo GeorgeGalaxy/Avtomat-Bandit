@@ -12,12 +12,13 @@ namespace Avtomat_Bandit
 {
     public partial class Form1 : Form
     {
-        int balance = 1000; //Исходный баланс.
+        int balance = 1000000000; //Исходный баланс.
         int counter_money = 0; //Текущий ставка.
         int counter_try = 0; //Счетчик попыток.
         int win_money = 0; //Выигранные деньги.
         bool IsActive = true;//Активность кнопки "Погнали!"
     int podkrut = 0;
+    int dvg = 0;
         public Form1()
         {
             InitializeComponent();
@@ -27,27 +28,27 @@ namespace Avtomat_Bandit
         {
             Random random = new Random(); //Создаем экземпляр класса Random
       
-      int dvg = 0;
+       dvg = 0;
       if (podkrut == 0 || podkrut != 0) { dvg = random.Next(8); }
-      if (podkrut != 0) { dvg = 7; } // Получаем случайное число от 0-7
+      
       label1.Text = dvg.ToString(); //Выводим полученное число.
         }
         private void dvg2_Tick(object sender, EventArgs e)
         {
             Random random = new Random();
       
-      int dvg = 0;
+       dvg = 0;
       if (podkrut == 0 || podkrut != 0) { dvg = random.Next(8); }
-      if (podkrut != 0) { dvg = 7; }
+      
       label2.Text = dvg.ToString();
         }
         private void dvg3_Tick(object sender, EventArgs e)
         {
             Random random = new Random();
       
-      int dvg = 0;
+       dvg = 0;
       if (podkrut == 0 || podkrut != 0) { dvg = random.Next(8); }
-      if (podkrut != 0) { dvg = 7; }
+      
             label3.Text = dvg.ToString();
         }
         private void button1_Click(object sender, EventArgs e)
@@ -66,18 +67,24 @@ namespace Avtomat_Bandit
         {
             dvg1.Enabled = false; //Останавливаем таймер запускающий первый барабан.
             stop1.Enabled = false; //Останавливаем таймер останавливающий первый барабан.
-        }
+      if (podkrut != 0) { dvg = 7; } // Получаем случайное число от 0-7
+      label1.Text = dvg.ToString();
+    }
         private void stop2_Tick(object sender, EventArgs e)
         {
             dvg2.Enabled = false;
             stop2.Enabled = false;
-        }
+      if (podkrut != 0) { dvg = 7; } // Получаем случайное число от 0-7
+      label2.Text = dvg.ToString();
+    }
         private void stop3_Tick(object sender, EventArgs e)
         {
             counter_try--; //Уменьшаем число попыток.
             dvg3.Enabled = false;
             stop3.Enabled = false;
-            Win_Money();
+      if (podkrut != 0) { dvg = 7; } // Получаем случайное число от 0-7
+      label3.Text = dvg.ToString();
+      Win_Money();
             if (IsActive)
             {
                 if (counter_try != 0) //Если число попыток больше 0, то даем возможность нажать на кнопку "Погнали!" еще раз, если нет, то блокируем кнопку "Погнали!", и выводим информационное окно.
@@ -98,7 +105,7 @@ namespace Avtomat_Bandit
             counter_money = Convert.ToInt32(counter); 
             balance = balance - counter_money;
             label4.Text = "Баланс: $" + balance;
-            counter_try = 1;
+            counter_try = 5;
             label6.Text = "Осталось попыток: " + counter_try;
         }
 
@@ -157,10 +164,31 @@ namespace Avtomat_Bandit
 
     private void button3_Click(object sender, EventArgs e)
     {
+      //if (podkrut == 0)
+      //  podkrut = 1;
+      //else
+      //  podkrut = 0;
+    }
+
+    private void button3_MouseHover(object sender, EventArgs e)
+    {
+      //if (podkrut == 0)
+      //  podkrut = 1;
+      //else
+      //  podkrut = 0;
+    }
+
+    private void label3_MouseHover(object sender, EventArgs e)
+    {
       if (podkrut == 0)
         podkrut = 1;
       else
         podkrut = 0;
+    }
+
+    private void label3_MouseLeave(object sender, EventArgs e)
+    {
+      podkrut = 0;
     }
   }
 }
